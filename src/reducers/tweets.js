@@ -12,9 +12,9 @@ export default function tweets (state = {}, action) {
         ...state,
         [action.id]: {
           ...state[action.id],
-          liked: action.hasLiked === true
-            ? state[action.id].liked.filer((uid) => uid !== action.authedUser )
-            : state[action.id].liked.concat([action.authedUser])
+          likes: action.hasLiked === true
+            ? state[action.id].likes.filter((uid) => uid !== action.authedUser )
+            : state[action.id].likes.concat([action.authedUser])
         }
       }
     default:
